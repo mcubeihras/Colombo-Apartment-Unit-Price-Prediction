@@ -1,0 +1,15 @@
+#particles-js{
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+#particles-js-predict{
+    background-color: blue;
+    height: 100px;
+    height: 100px;
+}
+.particles-js-1{
+    background: linear-gradient(to right, #82019f, #02ccab);
+    position: absolute;
+    top: 0;
+}

@@ -1,0 +1,73 @@
+body{
+    overflow-x: hidden;
+}
+.h-500{
+    height: 600px;
+}
+.display-none{
+    display: none;
+}
+#carousel-inner:hover #display-none{
+    display: block;
+}
+.bg-light-dark{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.text-active{
+    color: rgb(208, 224, 60);
+    font-weight: 600;
+    text-decoration: underline;
+}
+.main-bg{
+    background: linear-gradient(to right, #82019f, #02ccab), url('./assets/1.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.max-500{
+    max-width: 500px;
+}
+.card-form{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+input{
+    padding: 5px 20px;
+    font-size: 12px !important;
+}
+label{
+    font-size: 13px;
+    margin-bottom: 2px !important;
+}
+.border-light{
+    border: 1px solid rgb(84, 52, 227) !important;
+}
+.navbar{
+    z-index: 10;
+}
+.bg-dark-light{
+    background-color: rgba(0,0,0,0.6);
+}
+.hover:hover{
+    color: red;
+}
+.h-300{
+    height: 300px;
+}
+.about-bg{
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('./assets/2.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.predicted-bg{
+    /* background: linear-gradient(to right, #82019f, #02ccab);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 600px; */
+}
+.price{
+    font-weight: 900;
+    font-size: 100px;
+}
+

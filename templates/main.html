@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Price</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/particles.css') }}">
+</head>
+<body class="main-bg">
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand me-5" href="#"><img src="{{url_for('static', filename='logo.png')}}" alt="" width="80px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link text-white" aria-current="page" href="{{url_for('home')}}">Home</a>
+              <a class="nav-link text-white" href="{{url_for('about')}}">About</a>
+              <a class="nav-link text-active" href="{{url_for('main')}}">Go to predict price</a>
+            </div>
+          </div>
+        </div>
+      </nav> 
+
+      <section class="mt-5">
+        <div class="container d-flex align-items-center flex-column justify-content-center ps-5">
+            <h1 class="max-500 text-white ms-5 text-center">COLOMBO APARTMENT UNIT PRICE PREDICTION</h1>
+        </div>
+      </section>
+
+      <section class="mt-4 form-card">
+        <div class="container">
+            <form action="{{ url_for('predict') }}" method="POST">
+                <div class="card-form pt-0 mb-3 pt-3 bg-white">
+                    <div class="mx-5">
+                      <div class="row pb-3 mb-3">
+                          <div class="col-lg-4 mt-2 pt-2 col-md-12 border-end pe-5">
+                            <h6 class="mb-4 text-center text-primary">ACCOMADATIONS OF SUBJECT UNIT</h6>
+                            <div class="mb-3">
+                              <label for="bedrooms" class="form-label">Number of Bedrooms</label>
+                              <input type="number" class="form-control px-4" id="bedrooms" aria-describedby="emailHelp" name="bedrooms" placeholder="2" min="1" max="4">
+                            </div>
+                            <div class="mb-3">
+                              <label for="balcony" class="form-label">Balcony</label>
+                              <input type="number" class="form-control px-4" id="balcony" aria-describedby="emailHelp" name="balcony" placeholder="2" min="1" max="3">
+                            </div>
+                            <div class="mb-3">
+                              <label for="living_area" class="form-label">Number of Living area Launch</label>
+                              <input type="number" class="form-control px-4" id="balcony" aria-describedby="emailHelp" name="launch" placeholder="1" min="1" max="3">
+                            </div>
+                            <div class="mb-3">
+                              <label for="bathrooms" class="form-label">Number of Attached Bathrooms</label>
+                              <input type="number" class="form-control px-4" id="bathrooms" aria-describedby="emailHelp" name="bathrooms" placeholder="2" min="1" max="4">
+                            </div>
+                            <div class="mb-3">
+                              <label for="kitchen" class="form-label">Number of Pantry and Kitchens</label>
+                              <input type="number" class="form-control px-4" id="kitchen" aria-describedby="emailHelp" name="kitchen" placeholder="1" min="1" max="3">
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-12 mt-2 pt-2 border-end px-5">
+                            <h6 class="mb-4 text-center text-primary">Basic Details</h6>
+                            <div class="mb-3 d-flex">
+                              <label for="location" class="form-label w-50 mt-1">Location</label>
+                              <select class="form-control" name="location" id="location" required=1>   
+                                <option value="0">Kotahena</option>
+                                <option value="1">Wellawatta</option>
+                                <option value="2">Athurugirya</option>
+                                <option value="3">Bambalapitiya</option>
+                                <option value="4">Battaramulle</option>
+                                <option value="5">Borella</option>
+                                <option value="6">Cinnamon Garden</option>
+                                <option value="7">Dematagoda</option>
+                                <option value="8">Grandpass</option>
+                                <option value="9">Havelock Town</option>
+                                <option value="10">Hulsfdorf</option>
+                                <option value="11">Kaduwela</option>
+                                <option value="12">Kolpity</option> 
+                                <option value="13">Kottawa</option>
+                                <option value="14">Maradana</option>
+                                <option value="0">Mattakkuliya</option>
+                                <option value="1">Petta</option>
+                                <option value="1">Slave Island</option>
+                              </select>                           
+                            </div>
+                            <div class="mb-3 d-flex">
+                              <label for="floor_area" class="form-label w-50 mt-1">Floor Area(sqft)</label>
+                              <input type="number" class="form-control" id="floor_area" aria-describedby="emailHelp" name="floor_area" placeholder="Floor Area" min="900" max="2500">
+                            </div>
+                            <h6 class="mb-4 text-center text-primary">ADDITIONAL FACILITIES</h6>
+                            <div class="mb-3">
+                              <label for="made_s" class="form-label">Number of Made_s rooms</label>
+                              <input type="number" class="form-control px-4" id="made_s" aria-describedby="emailHelp" name="made_s" placeholder="2" min="1" max="2">
+                            </div>
+                            <div class="mb-3">
+                              <label for="store" class="form-label">Number of Store rooms</label>
+                              <input type="number" class="form-control px-4" id="store" aria-describedby="emailHelp" name="store" placeholder="2" min="1" max="3">
+                            </div>
+                            <div class="mb-3">
+                              <label for="washing" class="form-label">Number of Washing rooms</label>
+                              <input type="number" class="form-control px-4" id="washing" aria-describedby="emailHelp" name="washing" placeholder="2" min="1" max="3">
+                            </div>
+                          </div>
+                          <div class="col-lg-4 col-md-12 mt-2 pt-2 ps-5">
+                            <h6 class="mb-4 text-center text-primary">AVAILABLE COMMON FACILITIES OF APARTMENT</h6>
+                            <div class="mb-3 d-flex">
+                              <label class="form-label w-50 mt-1">
+                                A/C
+                              </label>
+                              <select class="form-control" name="ac" id="ac" required=1>   
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>   
+                              </select>
+                            </div>
+                            <div class="mb-3 d-flex">
+                              <label class="form-label w-50 mt-1">
+                                Swimming pool
+                              </label>
+                              <select class="form-control" name="pool" id="pool" required=1>   
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>   
+                              </select>
+                            </div>
+                            <div class="mb-3 d-flex">
+                              <label class="form-label w-50 mt-1">
+                                Roof Terrace
+                              </label>
+                              <select class="form-control" name="roof" id="roof" required=1>   
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>   
+                              </select>
+                            </div>
+                            <div class="mb-3 d-flex">
+                              <label class="form-label w-50 mt-1">
+                                24 Hours Security
+                              </label>
+                              <select class="form-control" name="security" id="security" required=1>   
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>   
+                              </select>
+                            </div>
+                            <div class="mb-3 d-flex">
+                              <label class="form-label w-50 mt-1">
+                                Gym
+                              </label>
+                              <select class="form-control" name="gym" id="gym" required=1>   
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>   
+                              </select>
+                            </div>
+                            <div class="mb-3 d-flex">
+                              <label class="form-label w-50 mt-1">
+                                Car parks
+                              </label>
+                              <select class="form-control" name="car" id="car" required=1>   
+                                <option value="0">1</option>
+                                <option value="1">2</option>
+                                <option value="1">3</option>   
+                              </select>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-warning mt-3 mb-4" type="button">PREDICT PRICE</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br>
+            
+            <div class="col-md-12" style="text-align: center;">
+                <h3><span>{{result}}</span></h3>
+            </div>
+        </div>
+      </section>
+      <section>
+        <div class="text-center bg-dark-light py-5 mt-5 z">
+          <h3 class="text-white">Contact Us</h3>
+          <h5 class="text-white mt-4">Apartmentprices@gmail.com</h5>
+          <h5 class="text-white">011- 2293397</h5>
+          <h5 class="text-white">No 14A, Kahathuduwa,Horana</h5>
+        </div>
+      </section>
+      <div id="particles-js" class="position-absolute top-0"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='particles.js')}}"></script>
+    <script src="{{url_for('static', filename='app.js')}}"></script>
+  </body>
+</html>
